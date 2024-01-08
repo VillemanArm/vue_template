@@ -10,6 +10,9 @@
                 type: Function,
                 required: true,
             },
+            delButtons: {
+                type: Function,
+            },
         },
         data() {
             return {
@@ -17,7 +20,6 @@
                 botAvatarURL: "/src/assets/img/bot_avatar.png",
             }
         },
-        methods: {},
     }
 </script>
 
@@ -33,7 +35,9 @@
             />
         </div>
         <div class="message__wrapper">
-            <div class="message__text">{{ message.text }}</div>
+            <div ref="message1" class="message__text">
+                {{ message.text }}
+            </div>
             <button
                 v-for="button in message.buttons"
                 type="button"
@@ -45,8 +49,8 @@
                             from: 'user',
                             date: Date.now(),
                             text: e.target.innerText,
-                            buttons: [],
                         })
+                        delButtons()
                     }
                 "
             >
@@ -74,12 +78,13 @@
 
     .message__wrapper
         display: inline-block
-        width: 190px
+        width: 186px
 
     .message__text, .message__button
-        max-width: 190px
+        max-width: 186px
         padding: 4px 6px
         margin-bottom: 4px
+        white-space: pre-line
 
         background-color: $primary-color
         color: $font-color

@@ -2,17 +2,35 @@
     import { Send } from "lucide-vue-next"
     export default {
         components: { Send },
-        data() {
-            return {}
+        props: {
+            sendMessage: {
+                type: Function,
+                required: true,
+            },
         },
-        methods: {},
+        methods: {
+            sendUserMessage() {
+                this.sendMessage({
+                    from: "user",
+                    date: Date.now(),
+                    text: this.$refs.messageInput.value,
+                    buttons: [],
+                })
+                this.$refs.messageInput.value = ""
+            },
+        },
     }
 </script>
 
 <template>
     <div class="message-input__block">
-        <input type="text" class="message-input__input" placeholder="Введите сообщение" />
-        <button type="button" class="message-input__send">
+        <input
+            ref="messageInput"
+            type="text"
+            class="message-input__input"
+            placeholder="Введите сообщение"
+        />
+        <button type="button" class="message-input__send" @click="sendUserMessage()">
             <div><Send size="20" /></div>
         </button>
     </div>
@@ -50,6 +68,9 @@
 
         background-color: $primary-color
         border-radius: 50%
+
+        &:hover
+            background-color: $primary-color-hover
 
 
         & div
