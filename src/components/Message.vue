@@ -15,10 +15,7 @@
             },
         },
         data() {
-            return {
-                userAvatarURL: "/src/assets/img/user_avatar.png",
-                botAvatarURL: "/src/assets/img/bot_avatar.png",
-            }
+            return {}
         },
     }
 </script>
@@ -30,7 +27,13 @@
     >
         <div class="message__avatar">
             <img
-                :src="message.from === 'bot' ? botAvatarURL : userAvatarURL"
+                v-if="message.from === 'bot'"
+                src="../assets/img/bot_avatar.png"
+                alt="avatar"
+            />
+            <img
+                v-else-if="message.from === 'user'"
+                src="../assets/img/user_avatar.png"
                 alt="avatar"
             />
         </div>
