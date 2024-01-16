@@ -120,7 +120,7 @@
         font-family: 'Ubuntu', sans-serif
         font-size: 14px
 
-        background-image: url('./assets/img/background.jpg')
+        background-image: url('/src/assets/img/background.jpg')
         background-position: -84px -4px
         background-size: 160%
         border-radius: 24px 12px 12px 12px

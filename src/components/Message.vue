@@ -28,12 +28,12 @@
         <div class="message__avatar">
             <img
                 v-if="message.from === 'bot'"
-                src="../assets/img/bot_avatar.png"
+                src="/src/assets/img/bot_avatar.png"
                 alt="avatar"
             />
             <img
                 v-else-if="message.from === 'user'"
-                src="../assets/img/user_avatar.png"
+                src="/src/assets/img/user_avatar.png"
                 alt="avatar"
             />
         </div>
